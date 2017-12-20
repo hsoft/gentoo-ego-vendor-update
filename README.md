@@ -14,3 +14,18 @@ Builds on Zac Medico's one-liners from https://bugs.gentoo.org/show_bug.cgi?id=6
 * Assumes github. Either the dependency line is in the `github.com/foo/bar <hash>` form or in the
   `some-name <hash> github.com/foo/bar` one.
 * Github limits access to its API to 60 requests per hour.
+
+## Generate EGO_VENDOR from source
+
+Manually updating `EGO_VENDOR`, even with `update_ego_vendor.sh` was becoming tiresome when the
+package would add new dependencies with lots of sub-dependencies, so I created a whole new script
+with a new approach: `extract_ego_vendor.sh`.
+
+To use this script, you must first create yourself an empty directory and set your `GOPATH` env
+variable to that path. Then, use `go get` or whatever else you need and ;et it fetch its
+dependencies. Then call `extract_ego_vendor.sh` with one argument: a path inside your `GOROOT` that
+has the `github.com`, `gopkg.in` and `golang.org` subdirectories.
+
+You will then get a neat `EGO_VENDOR` output.
+
+For now, this has only been tested with `lxc/lxd`.
