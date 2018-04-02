@@ -17,7 +17,7 @@ done
 find "$1/gopkg.in" -name ".git" -type d -printf "%P\n" | while read line; do
     reponame=$(dirname $line)
     repopath="$1/gopkg.in/$reponame"
-    gopkgurl="http://gopkg.in/$reponame"
+    gopkgurl="https://gopkg.in/$reponame"
     githuburl=$(curl -s $gopkgurl | grep -Eo "github.com/[^/]+/[^/]+/tree/[^\"]+")
     # example result: github.com/go-macaroon/macaroon/tree/v2
     githubname=$(echo $githuburl | cut -d / -f 1-3)
