@@ -22,7 +22,7 @@ package would add new dependencies with lots of sub-dependencies, so I created a
 with a new approach: `extract_ego_vendor.sh`.
 
 To use this script, you must first create yourself an empty directory and set your `GOPATH` env
-variable to that path. Then, use `go get` or whatever else you need and ;et it fetch its
+variable to that path. Then, use `go get` or whatever else you need and let it fetch its
 dependencies. Then call `extract_ego_vendor.sh` with one argument: a path inside your `GOROOT` that
 has the `github.com`, `gopkg.in` and `golang.org` subdirectories.
 
